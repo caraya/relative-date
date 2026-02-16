@@ -1,12 +1,13 @@
 {
   "name": "@elrond25/relative-date",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "./dist/relative-date.js",
   "module": "./dist/relative-date.js",
   "exports": {
     ".": "./dist/relative-date.js"
   },
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
