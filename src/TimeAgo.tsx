@@ -116,11 +116,11 @@ export const TimeAgo: React.FC<TimeAgoProps> = ({
   }, [date, locale, errorFallback, isReady]);
 
   if (!isReady && typeof Temporal === 'undefined') {
-    return <span className={className}>{loadingFallback}</span>;
+    return <span className={className || undefined}>{loadingFallback}</span>;
   }
 
   return (
-    <time dateTime={date} className={className}>
+    <time dateTime={date} className={className || undefined}>
       {timeAgo}
     </time>
   );
