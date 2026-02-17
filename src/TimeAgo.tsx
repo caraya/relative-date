@@ -47,16 +47,15 @@ export const TimeAgo: React.FC<TimeAgoProps> = ({
       const today = Temporal.Now.plainDateISO();
 
       // 2. Calculate duration
-      // Note: We use 'year' as largest unit but might want month/day rounding logic later.
+      // Use 'year' as largest unit but might want month/day rounding logic later.
       const diff = postDate.until(today, { largestUnit: 'year' });
 
       // 3. Handle future dates
       const isFuture = diff.sign === -1;
 
       if (isFuture) {
-        // As requested: just say "in the future" or equivalent "right now" logic?
-        // User asked: "If the date is in the future, just say right now"
-        // Let's use RelativeTimeFormat for "now" (0 seconds) which usually renders "now".
+        // If the date is today or in the future, use RelativeTimeFormat
+        // for "now" (0 seconds) which usually renders "now".
         const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
         return rtf.format(0, 'second');
       }
